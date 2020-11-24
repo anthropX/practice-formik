@@ -403,7 +403,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  display: inline-block;
+  display: block;
   line-height: initial;
   transition: background-color 200ms ease-in-out, border 200ms ease-in-out,
     transform 200ms ease-in-out;
