@@ -179,6 +179,10 @@ label {
   display: flex;
 }
 
+input {
+  display: block !important;
+}
+
 input[type="email"],
 input[type="text"],
 input[type="number"] {
