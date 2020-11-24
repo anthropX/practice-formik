@@ -1,23 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useFormik } from "formik";
+import { object, string } from "yup";
 import "./styles.css";
-
-const validate = (values) => {
-  let errors = {};
-  if (!values.firstName) errors.firstName = "Required";
-  else if (values.firstName.length > 15)
-    errors.firstName = "Mustn't exceed 15 chars";
-
-  if (!values.lastName) errors.lastName = "Required";
-  else if (values.lastName.length > 15)
-    errors.lastName = "Mustn't exceed 15 chars";
-
-  if (!values.email) errors.email = "Required";
-  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
-    errors.email = "Invalid email";
-  return errors;
-};
 
 const App = () => {
   const formik = useFormik({
@@ -26,7 +11,13 @@ const App = () => {
       firstName: "",
       lastName: "",
     },
-    validate,
+    validationSchema: object({
+      email: string().email("Invalid email").required("Required"),
+      firstName: string()
+        .max(15, "Mustn't exceed 15 char")
+        .required("Required"),
+      lastName: string().max(15, "Mustn't exceed 15 char").required("Required"),
+    }),
     onSubmit: (values) => console.log(values),
   });
   return (
