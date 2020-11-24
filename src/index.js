@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import "./styles.css";
+import MyInput from "./MyInput";
 
 const App = () => {
   return (
@@ -21,17 +22,9 @@ const App = () => {
     >
       {(formik) => (
         <Form noValidate>
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" type="text" />
-          <ErrorMessage name="firstName" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" type="text" />
-          <ErrorMessage name="lastName" />
-
-          <label htmlFor="email">Email</label>
-          <Field name="email" type="email" />
-          <ErrorMessage name="email" />
+          <MyInput label="First Name" name="firstName" type="text" />
+          <MyInput label="Last Name" name="lastName" type="text" />
+          <MyInput label="Email" name="email" type="text" />
           <button type="submit">Submit</button>
         </Form>
       )}
